@@ -1,12 +1,11 @@
-import connection from "../database/database";
+import prisma from "../database/database";
 import User from "../protocols/user-protocol";
 import UserId from "../protocols/userId-protocol";
 
 
 export async function getUsers() {
-    const result = await connection.query<User>(`SELECT * FROM users`);
-    const listUsers = result.rows
-    return listUsers;
+    const result = await prisma.users.findMany()
+    return result;
   }
 
 export async function createUser(user: User) {

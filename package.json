@@ -16,12 +16,14 @@
     "@types/node": "^20.3.2",
     "@types/pg": "^8.10.2",
     "nodemon": "^2.0.22",
+    "prisma": "^4.16.2",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.6",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.5"
   },
   "dependencies": {
+    "@prisma/client": "^4.16.2",
     "express": "^4.18.2",
     "http-status": "^1.6.2",
     "joi": "^17.9.2",

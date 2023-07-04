@@ -1,46 +1,10 @@
-pasta zerada => npm init -y
-apagar o “type”:”module” do package.json
-criar a pasta src e colocar o index.ts
-                    OU
-já cria toda a escritura de camadas, vide basic project full
-npm i -D typescript nodemon ts-node
-Muda o package.jason para colocar o run dev
-npx tsc --init
-usar a config que for passada ou usar a que for melhor
-geralmente usamos essa aqui:
-{
-  "compilerOptions": {
-    "outDir": "dist",
-    "esModuleInterop": true,
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "baseUrl": "src",
-    "paths": {
-      "@/*": [
-        "*"
-      ]
-    }
-  },
-  "ts-node": {
-    "esm": true
-  },
-}
-rodar npx tsc
-Mudar os scripts do package.jason para:
-  "scripts": {
-    "build": "tsc && tsc-alias",
-    "start": "node disc/index.js",
-    "dev": "nodemon src/index.ts"
-  }
-criar o nodemon.json para fazer o tsconfig-paths/register para usar path mapping
-próximos passos:
-npm i express joi pg http-status
-npm i -D @types/express @types/node @types/pg tsconfig-paths tsc-alias
-banco pg:
-CREATE TABLE "users" (
-	"userId" SERIAL PRIMARY KEY,
-	"name" TEXT,
-	"email" TEXT,
-	"password" TETX
-);
-Criar todas as pastas de camadas, o próprio projeto é uma documentação básica de um simples CRUD usando ts
+continuando a construção de projeto ts, mas agora migraremos/iniciaremos o ORM Prisma:
+npm i -D prisma
+npx prisma init
+configure o .env criado com seus dados
+configure o schema.prisma na pasta prisma com o provider do projeto
+npx prisma db pull
+npx prisma generate, após esse comando, copia o código do client que foi criado e substitua por todo o conteúdo anterior do database
+Fazendo isso deve arrumar todo o código para subistituir os import e export que antes era db do pg
+Também não usaremos mais querys, então tem que mudar todo o código para as funções do prisma
+Nesse CRUD nos repos terá o exemplo de como fica a sintaxe
