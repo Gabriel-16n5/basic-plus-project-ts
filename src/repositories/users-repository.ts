@@ -1,5 +1,6 @@
 import prisma from "../database/database";
 import User from "../protocols/user-protocol";
+import UserId from "../protocols/userId-protocol";
 
 type CreateUser = Omit<User, "userId">
 
@@ -33,9 +34,9 @@ export async function createUser(user: CreateUser) {
     return createUser
   }
 
-export async function deleteUserr(userId:User) {
+export async function deleteUserr(userId:number) {
     const deletedUser = await prisma.users.delete({
-      where: userId
+      where: {userId: userId}
     })
     return deletedUser
   }  
