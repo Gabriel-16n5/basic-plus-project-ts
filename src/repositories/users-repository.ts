@@ -9,6 +9,15 @@ export async function getUsers() {
     return usersList;
   }
 
+export async function getUsersId(userId:number) {
+    const user = await prisma.users.findUnique({
+       where: {
+        userId
+      }     
+    })
+    return user;
+  }
+  
   export async function getUserId(userId:number) {
     const uniqueUser = await prisma.users.findUnique({
       where: {
