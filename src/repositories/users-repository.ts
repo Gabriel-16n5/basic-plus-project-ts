@@ -1,30 +1,51 @@
 import prisma from "../database/database";
 import User from "../protocols/user-protocol";
-import UserId from "../protocols/userId-protocol";
 
+type CreateUser = Omit<User, "userId">
 
 export async function getUsers() {
-    const result = await prisma.users.findMany()
-    return result;
+    const usersList = await prisma.users.findMany()
+    return usersList;
   }
 
-export async function createUser(user: User) {
-    return await connection.query<User>(`
-    INSERT INTO users (name, email, password)
-        VALUES ($1, $2, $3)
-`, [user.name, user.email, user.password]);
+  export async function getUserId(userId:number) {
+    const uniqueUser = await prisma.users.findUnique({
+      where: {
+        userId
+      }
+    })
+    return uniqueUser;
+  }
+
+  // export async function getName(name:string) {
+  //   const firstUserName = await prisma.users.findFirst({
+  //     where: {
+  //       name
+  //     }
+  //   })
+  //   return firstUserName;
+  // }
+
+export async function createUser(user: CreateUser) {
+    const createUser = await prisma.users.create({
+      data: user
+    })
+    return createUser
   }
 
 export async function deleteUserr(userId:User) {
-    return await connection.query<UserId>(`
-    DELETE FROM users WHERE "userId" = $1
-`, [userId]);
+    const deletedUser = await prisma.users.delete({
+      where: userId
+    })
+    return deletedUser
   }  
 
-  export async function updateUserr(user:User) {
-    return  await connection.query(`
-    UPDATE users
-        SET "name" = $2, email = $3, password = $4
-            WHERE "userId" = $1
-    ;`, [user.userId, user.name, user.email, user.password])
+  export async function updateUserr(user:User, userId:number) {
+    const updatedUser = await prisma.users.update({
+      data: user,
+      where: {
+        userId
+      }
+    })
+    return updatedUser
   }

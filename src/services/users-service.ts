@@ -17,5 +17,5 @@ export async function deleteUser(userId) {
 
 export async function updateUser(user:User) {
 
-    return await updateUserr(user);
+    return await updateUserr(user, user.userId);
 }

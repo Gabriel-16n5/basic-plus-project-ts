@@ -11,5 +11,5 @@ model users {
   userId   Int     @id @default(autoincrement())
   name     String?
   email    String?
-  password Int?
+  password String? @db.VarChar(255)
 }
