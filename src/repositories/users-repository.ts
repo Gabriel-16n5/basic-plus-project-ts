@@ -27,14 +27,14 @@ export async function getUsersId(userId:number) {
     return uniqueUser;
   }
 
-  // export async function getName(name:string) {
-  //   const firstUserName = await prisma.users.findFirst({
-  //     where: {
-  //       name
-  //     }
-  //   })
-  //   return firstUserName;
-  // }
+  export async function getName(name:string) {
+    const firstUserName = await prisma.users.findFirst({
+      where: {
+        name
+      }
+    })
+    return firstUserName;
+  }
 
 export async function createUser(user: CreateUser) {
     const createUser = await prisma.users.create({
