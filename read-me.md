@@ -31,3 +31,8 @@ Se surgir dúvidas, rever aulas 5, 6 e 7 do mini curso de prisma
 </br>
 
 As migrations são muito importantes e boas, pq eu consigo alterar o banco de uma forma muito mais segura, apenas alterando a model do prisma schema e rodando npx prisma migrate dev, ele tbm irá fazer uma espécie de vercionamento.
+
+colocar nos scripts package.json:
+
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy"
